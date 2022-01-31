@@ -134,3 +134,5 @@ dmypy.json
 # Custom
 *nogit*
 
+# poetry
+poetry.lock
