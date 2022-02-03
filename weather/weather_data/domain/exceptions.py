@@ -1,0 +1,2 @@
+class WeatherDataNotFound(Exception):
+    pass
