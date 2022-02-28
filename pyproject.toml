@@ -7,6 +7,7 @@ license = "Apache-2.0"
 
 [tool.poetry.dependencies]
 python = "^3.8"
+requests = "^2.27.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
@@ -21,7 +22,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 testpaths = "tests"
-addopts = "--cov=weather_data --cov-report=term-missing:skip-covered --cov-report=html --cov-report=xml"
+addopts = "--cov=weather --cov-report=term-missing:skip-covered --cov-report=html --cov-report=xml"
 
 [tool.coverage.run]
 omit = ["tests/*", "venv*/*", "setup.py"]
