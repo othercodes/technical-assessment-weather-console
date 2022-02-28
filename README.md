@@ -2,6 +2,21 @@
 
 Implement a console-based weather viewer satisfying the scenarios below.
 
+## Installation
+
+Just clone the repository and install the dependencies using [Poetry](https://python-poetry.org/):
+
+```bash
+git clone https://github.com/othercodes/technical-assessment-weather-console
+cd technical-assessment-weather-console
+poetry install
+# this will create a virtual env for the app
+cp example.env .env
+# copy the example.env as .env and set the required credentials
+# finally run the application :D
+poetry run python myweatherapp.py
+```
+
 ## Scenarios
 
 **Get the current weather data for the given location.**
@@ -15,6 +30,7 @@ Options:
 * --units: Units of measurement must be `metric` or `imperial`, `metric` by default.
 
 Example:
+
 ```bash
 $ myweatherapp current Irvine,US --units=imperial
 IRVINE (US)
@@ -35,6 +51,7 @@ Options:
 * --units: Units of measurement must be `metric` or `imperial`, `metric` by default.
 
 Example:
+
 ```bash
 $ myweatherapp forecast Santander,ES --days=3
 SANTANDER (ES)
