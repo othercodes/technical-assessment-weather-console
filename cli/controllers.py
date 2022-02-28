@@ -48,3 +48,31 @@ def current_command(renderer: Renderer, location: str, units: str):
         description=weather.description,
         temperature=temp_unit(weather.temperature)
     ))
+
+
+def forcast_command(renderer: Renderer, location: str, units: str, days: int):
+    location = location.split(',', 2)
+    if len(location) != 2:
+        raise ValueError('Invalid argument location must be <city>,<country code>.')
+
+    location = Location(*location)
+
+    use_case = WeatherFinder(__make_service())
+    forecast = use_case.forecast(location, days)
+
+    temp_conversion = {
+        'metric': lambda temperature: temperature.to_celsius(),
+        'imperial': lambda temperature: temperature.to_fahrenheit(),
+    }
+    temp_unit = temp_conversion.get(units)
+
+    renderer.render('{city}({country})'.format(
+        city=location.city,
+        country=location.country,
+    ))
+    for weather in forecast:
+        renderer.render("{date}\n> Weather: {description}\n> Temperature: {temperature}".format(
+            date=weather.date.strftime('%b %m, %Y'),
+            description=weather.description,
+            temperature=temp_unit(weather.temperature)
+        ))
